@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RoyalClouds – Best Minecraft Hosting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif;}
+    body {
+      /* Minecraft background image + gradient overlay */
+      background:
+        url('https://www.minecraft.net/content/dam/minecraftnet/community/share/Minecraft_Fall_Drop_Campaign_Key_Art_Homepage_Hero-A-1200_Image-ID_1800x1080_01.jpg');
+      /* Example image: Replace with a Minecraft or city wallpaper you like */
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center center;
+      min-height: 100vh;
+      color: #fff;
+    }
+    a { color: inherit; text-decoration: none; }
+    .header {
+      background: linear-gradient(100deg, #15243cd7 40%, #005bcae0 100%);
+      padding: 32px 0 18px 0; text-align: center;
+      border-bottom: 3px solid #00eaff70;
+      box-shadow: 0 6px 24px #005caa2d;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      font-family: 'Minecraftia', monospace, Arial;
+      letter-spacing: 2px;
+      text-shadow: 1px 2px 6px #343f57a6;
+    }
+    .header p {
+      margin: 10px 0 0 0;
+      font-size: 1.02rem;
+      color: #d4e7fe;
+      font-weight: 400;
+    }
+    .about {
+      max-width: 760px;
+      margin: 35px auto 25px auto;
+      background: rgba(10,42,95,0.74);
+      border-radius: 19px;
+      box-shadow: 0 2px 20px #18bae479;
+      padding: 32px 16px 26px 16px;
+      text-align: center;
+    }
+    .about h3 { font-size: 1.4rem; margin-bottom: 10px;}
+    .about ul { list-style: none; text-align: left; max-width:480px; margin:13px auto;}
+    .about ul li {
+      margin: 7px 0;
+      font-size: 1.08rem;
+      padding-left: 18px;
+      position: relative;
+    }
+    .about ul li:before { content: "✅ "; position: absolute; left:0;}
+    .about .founders, .about .discord-invite {
+      margin-top: 20px; font-size: 1.08rem;
+    }
+    .about .discord-invite a {
+      color: #fff; background: #5865f2;
+      padding: 6px 14px; border-radius: 10px;
+      font-weight: 600; display: inline-block; margin-top:8px;
+      box-shadow: 0 2px 12px #5865f260; transition: background .2s;
+    }
+    .about .discord-invite a:hover {
+      background: #404eed;
+    }
+    .category {
+      text-align: left;
+      max-width: 900px;
+      margin: 48px auto 14px auto;
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 10px #001f3b80;
+      letter-spacing: 0.8px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      gap: 22px;
+      max-width: 980px;
+      margin: 0 auto 12px auto;
+    }
+    .plan-card {
+      background: rgba(25, 32, 56, 0.94);
+      border-radius: 16px;
+      box-shadow: 0 3px 15px #00eaff49, 0 1.5px 10px #208cff23;
+      padding: 30px 17px 22px 17px;
+      text-align: center;
+      position: relative;
+      border-top: 4px solid #48e1ff;
+      transition: transform .088s;
+    }
+    .plan-card.featured { border-top: 5px solid #ffc137; box-shadow: 0 0 27px #ffc13752;}
+    .plan-card.pro { border-top: 5px solid #e245bc;}
+    .plan-card .tag {
+      position:absolute;top:18px;right:18px;
+      background: #ffc137;
+      color: #27252f;
+      font-weight: 700;
+      font-size: .87rem;
+      padding: 2px 10px;
+      border-radius: 8px;
+      letter-spacing: 0.7px;
+    }
+    .plan-card .tag.pro {background: #e245bc;color:#fff;}
+    .plan-title {font-size: 1.3rem; letter-spacing:0.2px; font-weight: bold; margin-bottom: 8px;}
+    .plan-desc { font-size: .96rem; color: #bbdefb;}
+    .plan-features {
+      margin: 17px 0 14px 0;
+      color: #fff;
+      font-size: .99rem;
+      line-height: 1.6;
+      min-height:88px;
+    }
+    .plan-price {
+      font-size: 1.38rem;
+      color: #16e9c4;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .plan-buttons {
+      display: flex;
+      gap: 10px; justify-content: center;
+    }
+    .plan-buttons button, .plan-buttons a {
+      background: linear-gradient(90deg,#00c0ff,#0086ff);
+      color: #fff;
+      font-size: 1.02rem;
+      font-weight: 600;
+      border: none; padding: 7px 19px;
+      border-radius: 10px; cursor: pointer;
+      margin-top:5px; box-shadow: 0 2px 12px #52e2ff56;
+      transition: background .21s, transform .1s;
+      display:inline-block;
+      text-decoration:none;
+    }
+    .plan-buttons a.buy {
+      background: linear-gradient(90deg,#ff5a56,#f75ed7);
+      color: #fff;
+    }
+    .plan-buttons a.buy.featured {
+      background: linear-gradient(100deg,#ffc137,#ffa26f 90%);
+      color: #1a232c;
+    }
+    .plan-buttons a.buy.pro {
+      background: linear-gradient(90deg,#b972f7, #e245bc 90%);
+      color: #fff;
+    }
+    .plan-buttons a:hover, .plan-buttons a:focus, .plan-buttons button:hover {transform: scale(1.07);}
+    .plan-card.disabled {
+      filter: grayscale(65%) brightness(.81);
+      opacity:.65; pointer-events: none;
+    }
+    .plan-card.disabled .plan-title {color:#aaa;}
+    .free-note {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #fffa;
+      font-size: 1.04rem;
+      margin-bottom: 14px;
+      margin-top: -10px;
+      background: #208cff19;
+      border-radius: 13px;
+      padding: 18px 10px 15px 10px;
+    }
+    footer {text-align:center;margin:44px 0 18px 0;font-size:.96rem;color:#bce4ff60;}
+    @media (max-width: 500px) {
+      .header h1 {font-size:1.3rem;}
+      .about {padding:18px 6px 22px 6px;}
+      .plans-grid {grid-template-columns: 1fr;}
+      .category {font-size:1.05rem;}
+      .plan-card {padding:24px 9px 17px 9px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🚀 RoyalClouds – Best Minecraft Hosting</h1>
+    <p>Ultra-low prices • Lag-free servers • Fast ping • 24/7 support</p>
+  </div>
+  <div class="about">
+    <h3>Why Choose RoyalClouds?</h3>
+    <ul>
+      <li>Ultra-low prices</li>
+      <li>Smooth, lag-free servers</li>
+      <li>Fast ping & stable performance</li>
+      <li>Awesome default IP</li>
+      <li>24/7 support</li>
+    </ul>
+    <div class="founders">
+      🌟 Founded by <b>laggglaggg</b> & <b>TASTY_BLOOD</b>
+    </div>
+    <div class="discord-invite">
+      🎮 Join our community now:<br>
+      <a href="https://discord.gg/uHDYU9PB8M" target="_blank">discord.gg/uHDYU9PB8M</a>
+    </div>
+    <div style="margin-top:18px; font-family:'monospace',sans-serif;color:#bce4ff;">– ʀᴏʏᴀʟᴄʟᴏᴜᴅꜱ Founders</div>
+  </div>
+  <div class="category">Paid Plans</div>
+  <div class="plans-grid" id="paid-plans"></div>
+  <div class="category">Free Plans</div>
+  <div class="plans-grid">
+    <div class="free-note">
+      <b>Free Plans require joining our Discord server.</b><br>
+      <a href="https://discord.gg/uHDYU9PB8M" target="_blank" style="font-weight:700;color:#fff;text-decoration:underline;">
+        Click here to join!
+      </a>
+    </div>
+  </div>
+  <div class="category">VPS Plans</div>
+  <div class="plans-grid">
+    <div class="plan-card disabled">
+      <div class="plan-title">Coming Soon...</div>
+      <div class="plan-features" style="margin-top:19px;">More details about VPS plans will appear here soon!</div>
+    </div>
+  </div>
+  <div class="category">Budget Plans</div>
+  <div class="plans-grid" id="budget-plans"></div>
+  <footer>
+    © 2025 RoyalClouds – The #1 Minecraft Hosting for Gamers | Design by laggglaggg
+  </footer>
+  <script>
+    const paidPlans = [
+      {
+        name: "Coal Plan",
+        features: [
+          "CPU: 100%",
+          "RAM: 4GB",
+          "Storage: 10GB",
+          "1 Port | Backup"
+        ],
+        price: "₹150 / $2",
+        tag: null
+      },
+      {
+        name: "Iron Plan",
+        features: [
+          "CPU: 150%",
+          "RAM: 6GB",
+          "Storage: 20GB",
+          "2 Ports | Backup"
+        ],
+        price: "₹250 / $3.5",
+        tag: null
+      },
+      {
+        name: "Diamond Plan",
+        features: [
+          "CPU: 200%",
+          "RAM: 8GB",
+          "Storage: 30GB",
+          "3 Ports | Backup"
+        ],
+        price: "₹310 / $4.25",
+        tag: "Best Value"
+      },
+      {
+        name: "Lapis Plan",
+        features: [
+          "CPU: 300%",
+          "RAM: 12GB",
+          "Storage: 40GB",
+          "5 Ports | Backup"
+        ],
+        price: "₹400 / $5.5",
+        tag: null
+      },
+      {
+        name: "Netherite Plan",
+        features: [
+          "CPU: 500%",
+          "RAM: 14GB",
+          "Storage: 45GB",
+          "6 Ports | Backup"
+        ],
+        price: "₹470 / $6.5",
+        tag: "Power Users"
+      },
+      {
+        name: "Void Plan",
+        features: [
+          "CPU: 700%",
+          "RAM: 16GB",
+          "Storage: 50GB",
+          "7 Ports | Backup"
+        ],
+        price: "₹570 / $7.75",
+        tag: "Ultimate"
+      }
+    ];
+
+    const budgetPlans = [
+      {
+        name: "Coal Plan",
+        features: [
+          "CPU: 100%",
+          "RAM: 4GB",
+          "Storage: 10GB",
+          "1 Port | Backup"
+        ],
+        price: "₹30 / $0.34",
+        tag: null
+      },
+      {
+        name: "Iron Plan",
+        features: [
+          "CPU: 150%",
+          "RAM: 6GB",
+          "Storage: 20GB",
+          "2 Ports | Backup"
+        ],
+        price: "₹50 / $0.56",
+        tag: null
+      },
+      {
+        name: "Diamond Plan",
+        features: [
+          "CPU: 200%",
+          "RAM: 8GB",
+          "Storage: 30GB",
+          "3 Ports | Backup"
+        ],
+        price: "₹80 / $0.90",
+        tag: "Best Value"
+      },
+      {
+        name: "Lapis Plan",
+        features: [
+          "CPU: 300%",
+          "RAM: 12GB",
+          "Storage: 40GB",
+          "5 Ports | Backup"
+        ],
+        price: "₹130 / $1.47",
+        tag: null
+      },
+      {
+        name: "Netherite Plan",
+        features: [
+          "CPU: 500%",
+          "RAM: 14GB",
+          "Storage: 45GB",
+          "6 Ports | Backup"
+        ],
+        price: "₹160 / $1.80",
+        tag: "Power Users"
+      },
+      {
+        name: "Void Plan",
+        features: [
+          "CPU: 700%",
+          "RAM: 16GB",
+          "Storage: 50GB",
+          "7 Ports | Backup"
+        ],
+        price: "₹200 / $2.25",
+        tag: "Ultimate"
+      }
+    ];
+
+    function makePlanCard(plan, featured=false, pro=false) {
+      let cardClass = "plan-card";
+      if(plan.tag==="Best Value") cardClass += " featured";
+      if(plan.tag==="Power Users") cardClass += " pro";
+      let featuresHtml = plan.features.map(f => `<div>• ${f}</div>`).join("");
+      let buyBtnClass = "buy";
+      if(plan.tag==="Best Value") buyBtnClass += " featured";
+      if(plan.tag==="Power Users") buyBtnClass += " pro";
+
+      return `
+      <div class="${cardClass}">
+        ${plan.tag ? `<div class="tag${plan.tag==='Power Users' ? ' pro' : ''}">${plan.tag}</div>` : ""}
+        <div class="plan-title">${plan.name}</div>
+        <div class="plan-features">${featuresHtml}</div>
+        <div class="plan-price">${plan.price}</div>
+        <div class="plan-buttons">
+          <a class="add-cart" href="https://discord.gg/uHDYU9PB8M"  target="_blank" title="Order on Discord">Add to Cart</a>
+          <a class="${buyBtnClass}" href="https://discord.gg/uHDYU9PB8M" target="_blank" title="Order Now on Discord">Buy Now</a>
+        </div>
+      </div>
+      `;
+    }
+    const paidGrid = document.getElementById("paid-plans");
+    paidPlans.forEach(plan=>paidGrid.innerHTML += makePlanCard(plan));
+    const budgetGrid = document.getElementById("budget-plans");
+    budgetPlans.forEach(plan=>budgetGrid.innerHTML += makePlanCard(plan));
+    if(window.location.hash==="plans") {
+      setTimeout(()=>document.getElementById("paid-plans").scrollIntoView({behavior:"smooth"}),350);
+    }
+    // Mouse sprinkles effect
+document.addEventListener('mousemove', function(e) {
+    createSprinkles(e.clientX, e.clientY);
+});
+
+function createSprinkles(x, y) {
+    // Create multiple sprinkles at once
+    for (let i = 0; i < 8; i++) {
+        const sprinkle = document.createElement('div');
+        
+        // Random colors for sprinkles
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Style the sprinkle
+        sprinkle.style.position = 'fixed';
+        sprinkle.style.left = x + 'px';
+        sprinkle.style.top = y + 'px';
+        sprinkle.style.width = '6px';
+        sprinkle.style.height = '6px';
+        sprinkle.style.backgroundColor = randomColor;
+        sprinkle.style.borderRadius = '50%';
+        sprinkle.style.pointerEvents = 'none';
+        sprinkle.style.zIndex = '9999';
+        sprinkle.style.transition = 'all 2s ease-out';
+        
+        // Add to page
+        document.body.appendChild(sprinkle);
+        
+        // Animate the sprinkle
+        setTimeout(() => {
+            const angle = (Math.PI * 2 * i) / 8; // Spread in circle
+            const distance = 50 + Math.random() * 50; // Random distance
+            
+            sprinkle.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`;
+            sprinkle.style.opacity = '0';
+        }, 10);
+        
+        // Remove sprinkle after 2 seconds
+        setTimeout(() => {
+            if (sprinkle.parentNode) {
+                sprinkle.parentNode.removeChild(sprinkle);
+            }
+        }, 2000);
+    }
+}
+
+// Optional: Add some CSS for smoother animations
+const style = document.createElement('style');
+style.textContent = `
+    .sprinkle {
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    }
+`;
+document.head.appendChild(style);
+
+  </script>
+</body>
+</html>
