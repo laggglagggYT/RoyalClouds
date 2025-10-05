@@ -449,7 +449,111 @@ document.head.appendChild(style);
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8324727764739394"
      crossorigin="anonymous"></script>
+
+<style>  
+    /* === STARTUP LOADING SCREEN WITH FADE === */
+    .startup-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #000000 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+      opacity: 0;
+      animation: fadeInStartup 0.8s ease-in 0s forwards, fadeOutStartup 0.7s ease-out 2.3s forwards;
+    }
+    @keyframes fadeInStartup {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes fadeOutStartup {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    .startup-logo {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin-bottom: 38px;
+      text-decoration: none;
+    }
+
+    .startup-logo img {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      box-shadow: 0 0 60px #00d4ff80, 0 0 90px #0099cc60, 0 0 0 8px #181c24;
+      animation: logoGlow 2s ease-in-out infinite alternate;
+      border: 4px solid #111b33;
+      transition: transform 0.31s cubic-bezier(.19,1,.22,1);
+      object-fit: cover;
+    }
+
+    .startup-text {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #00d4ff;
+      text-shadow: 0 0 30px #00d4ff80, 0 0 60px #0099cc40;
+      font-family: 'Minecraftia', monospace, Arial;
+      letter-spacing: 2px;
+    }
+
+    .startup-logo:hover img {
+      transform: scale(1.04) rotate(-3deg);
+      box-shadow: 0 0 80px #07d9ffcc, 0 0 120px #55f5ff90;
+      border-color: #00d4ff;
+    }
+
+    .startup-logo:hover .startup-text {
+      text-shadow: 0 0 40px #00d4ffb0, 0 0 80px #0099cc60;
+    }
+
+    /* SPINNING LOADING CIRCLE */
+    .loading-circle {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #ffffff26;
+      border-top: 4px solid #00d4ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 20px #00d4ff40;
+      margin-top: 29px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    @keyframes logoGlow {
+      0% { box-shadow: 0 0 60px #00d4ff90, 0 0 90px #0099cc50, 0 0 0 8px #181c24;}
+      100% { box-shadow: 0 0 80px #00d4ffcc, 0 0 140px #53f7ff88, 0 0 0 8px #1b1e2e;}
+    }
+
+    @media (max-width: 500px) {
+      .startup-logo { flex-direction: column; gap: 15px; }
+      .startup-logo img { width: 90px; height: 90px;}
+      .startup-text { font-size: 2.2rem; }
+    }
+  </style>
+  <!-- === STARTUP LOADING SCREEN === -->
+  <div class="startup-screen" id="startupScreen">
+    <a class="startup-logo" href="" target="_blank" title="RoyalClouds Logo">
+      <img src="https://i.postimg.cc/JzRkjb6t/RC-ANIMATED.gif alt="RoyalClouds Logo" draggable="false">
+      <div class="startup-text">RoyalClouds</div>
+    </a>
+    <div class="loading-circle"></div>
+  </div>
+  <script>
+    // Remove startup screen after fade completes (3s total)
+    setTimeout(() => {
+      const startupScreen = document.getElementById('startupScreen');
+      if (startupScreen) {
+        startupScreen.style.display = 'none';
+      }
+    }, 3100);
+  </script>
 </body>
 </html>
-
-
